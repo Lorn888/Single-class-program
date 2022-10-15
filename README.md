@@ -1,129 +1,100 @@
-# Test Drive a Single-Class Program
+# Design a Single-Class Program
 
 _**This is a Makers Vine.** Vines are designed to gradually build up sophisticated skills. They contain a mixture of text and video, and may contain some challenge exercises without proposed solutions. [Read more about how to use Makers
 Vines.](https://github.com/makersacademy/course/blob/main/labels/vines.md)_
 
-Learn to test-drive a single-class program.
+Learn to design a single-class program.
 
 ## Introduction
 
-Test-driving a single-class program is similar to test-driving a single-method
-program. Our approach differs purely because methods and classes are different.
+To design single-class programs we need to update our design recipe. Here is
+the updated recipe:
 
-**A method** is a reusable chunk of code that takes input as arguments and
-returns a value.
+> # Single-Class Programs Design Recipe
+> 
+> ## 1. Describe the Problem
+> 
+> Typically you will be given a short statement that does this called a user
+> story. In industry, you may also need to ask further questions to clarify
+> aspects of the problem.
+> 
+> ## 2. Design the Class Interface
+> 
+> The interface of a class includes:
+> 
+> * The name of the class.
+> * The design of its initializer and the parameters it takes.
+> * The design of its public methods, including:
+>   * Their names and purposes
+>   * What parameters they take and the data types.
+>   * What they return and that data type
+>   * Any other side effects they might have.
+> 
+> Steps 3 and 4 then operate as a cycle.
+> 
+> ## 3. Create Examples as Tests
+> 
+> These are examples of the class being used with different initializer
+> arguments, method calls, and how it should behave.
+> 
+> For complex challenges you might want to come up with a list of examples first
+> and then test-drive them one by one. For simpler ones you might just dive
+> straight into writing a test for the first example you want to address.
+> 
+> ## 4. Implement the Behaviour
+> 
+> For each example you create as a test, implement the behaviour that allows the
+> class to behave according to your example.
+> 
+> At this point you may wish to apply small-step test-driving to manage the
+> complexity. This means you only write the minimum lines of the example to get
+> the test to fail (red), then make it pass (green) and refactor, before adding
+> another line to the test until it fails, then continue.
+> 
+> Then return to step 3 until you have addressed the problem you were given. You
+> may also need to revise your design, for example if you realise you made a
+> mistake earlier.
 
-**An object** is a structure that wraps ('encapsulates') a collection of values
-(called 'state' or 'memory') and exposes some methods that can operate on that
-state.
+Copy and fill out [this template](../resources/single_class_recipe_template.md)
+for each of the below exercises.
 
-**A class** is a blueprint for creating objects.
+## Demonstration
 
-**In object-oriented programming, the most important unit of behaviour is the
-class.** We build our programs by creating classes that work together to
-accomplish the job of the program.
+[A video demonstration](https://www.youtube.com/watch?v=sRAtinfld-w&t=2385s)
 
-To introduce this, we're going to:
-
-1. Test-drive a single-class program.
-2. Design a single-class program.
-3. Test-drive a system of classes.
-4. Design a system of classes.
-
-In this step, we will test-drive a single class program. This means we will
-focus on the 'Create Examples as Tests' and 'Implement Behaviour' steps first.
-
-## Creating Examples for Single-Class Programs
-
-Instead of an example like this:
-
-```ruby
-extract_uppercase("hello WORLD") => ["WORLD"]
-```
-
-We will need to create examples of the behaviour of the class, like this:
-
-```ruby
-gratitudes = Gratitudes.new
-gratitudes.add("your cat")
-gratitudes.add("nice people")
-expect(gratitudes.format).to eq "Be grateful for: your cat, nice people"
-```
-
-Some methods on a class can be tested individually, but much of the time
-creating examples for a class requires multiple methods to be called.
-
-Implementing behaviour is roughly the same as for methods, though we will place
-more emphasis on building the examples and behaviour in small steps due to the
-increased complexity of single-class tests.
-
-[A video demonstration](https://www.youtube.com/watch?v=sRAtinfld-w&t=0s)
+<!-- OMITTED -->
 
 ## Exercise
 
-Test-drive a class with the following interface. Feel free to re-use your
-previous code, or re-write it if you want to practice.
+Follow the design recipe to implement the following user stories in your
+project. Both of these will be within a single class.
 
-```ruby
-class DiaryEntry
-  def initialize(title, contents) # title, contents are strings
-    # ...
-  end
+> As a user  
+> So that I can keep track of my tasks  
+> I want a program that I can add todo tasks to and see a list of them.
 
-  def title
-    # Returns the title as a string
-  end
+> As a user  
+> So that I can focus on tasks to complete  
+> I want to mark tasks as complete and have them disappear from the list.
 
-  def contents
-    # Returns the contents as a string
-  end
+Don't worry about user input & output here.
 
-  def count_words
-    # Returns the number of words in the contents as an integer
-  end
-
-  def reading_time(wpm) # wpm is an integer representing the number of words the
-                        # user can read per minute
-    # Returns an integer representing an estimate of the reading time in minutes
-    # for the contents at the given wpm.
-  end
-
-  def reading_chunk(wpm, minutes) # `wpm` is an integer representing the number
-                                  # of words the user can read per minute
-                                  # `minutes` is an integer representing the
-                                  # number of minutes the user has to read
-    # Returns a string with a chunk of the contents that the user could read
-    # in the given number of minutes.
-    # If called again, `reading_chunk` should return the next chunk, skipping
-    # what has already been read, until the contents is fully read.
-    # The next call after that it should restart from the beginning.
-  end
-end
-```
-
-[Example Solution](https://www.youtube.com/watch?v=sRAtinfld-w&t=820s)
+[Example Solution](https://www.youtube.com/watch?v=sRAtinfld-w&t=3760s)
 
 ## Challenge
 
-Test-drive a class with the following interface. Feel free to re-use or re-write
-your previous code.
+**This is a process feedback challenge.** That means you should record yourself
+doing it and submit that recording to your coach for feedback. [How do I do
+this?](../pills/process_feedback_challenges.md)
 
-```ruby
-class GrammarStats
-  def initialize
-    # ...
-  end
+Follow the design recipe to implement the following user story in your project.
+This will be in a new class.
 
-  def check(text) # text is a string
-    # Returns true or false depending on whether the text begins with a capital
-    # letter and ends with a sentence-ending punctuation mark.
-  end
+> As a user  
+> So that I can keep track of my music listening  
+> I want to add tracks I've listened to and see a list of them.
 
-  def percentage_good
-    # Returns as an integer the percentage of texts checked so far that passed
-    # the check defined in the `check` method. The number 55 represents 55%.
-  end
-end
-```
+After you're done, [submit your recording
+here.](https://airtable.com/shrNFgNkPWr3d63Db?prefill_Item=gs_as02)
 
 
