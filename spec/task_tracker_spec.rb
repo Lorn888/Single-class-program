@@ -7,4 +7,15 @@ RSpec.describe 'task_tracker' do
         result = tracker.task_list
         expect(result).to eq "task1"
     end 
+
+    it "returns multiple tasks" do
+        tracker = Reminder.new
+        tracker.task_tracker("task1")
+        tracker.task_tracker("task2")
+        result = tracker.task_list
+        expect(result).to eq "task1, task2"
+    end 
+
+
+
 end
